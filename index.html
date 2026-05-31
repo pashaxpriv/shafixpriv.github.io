@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maafin Aku ya, Sofieku Tercinta...</title>
+    <!-- Menghubungkan ke file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Efek Hati Mengambang -->
+    <div class="hearts-container" id="hearts-container"></div>
+
+    <div class="container">
+        <!-- Galeri Foto Polaroid -->
+        <div class="photo-gallery">
+            <div class="polaroid">
+                <!-- Ganti src dengan foto kamu sendiri jika sudah siap -->
+                <img src="foto1.jpg" alt="Momen Kita 1">
+                <div class="caption">Moment paling Indah ✨</div>
+            </div>
+            <div class="polaroid">
+                <img src="foto2.jpg" alt="Momen Kita 2">
+                <div class="caption">Indah banget ya kita dulu 😁</div>
+            </div>
+        </div>
+
+        <h1>maafin Aku yaaa, sofiee sayang... 😅</h1>
+        <p>Aku minta maafff bangettt samaa kamuu garaa garaa kesalahan yang terus terusann aku ulangin dan udah bikin kamuu sedih atau marah akhir akhir ini bahkann darii awall kitaa pacarann duluu. akuu juga ndaa bermaksud sedikitpunn buat nyakitin hati kamu bahkan kata kata aku yang jelas jelas ngebuat hati kamu hancur. aku juga minta maaf bangett karna selamaa inii perann akuu kurangg buatt kamuu. tolong maafinnn akuuu yaaa, sebenernyaa akuu jugaa masii sayangg samaa kamuu,akuu gamauu jauhh darii kamuu.aku janji bakal jadi lebihh baikk dari sebelumnyaa dan sekarangg akuu jugaa masii berusahaa maaff yahh selamaa inii akuu gadaa action😔.</p>
+        
+        <div class="button-group">
+            <!-- Tombol Kiri -->
+            <button class="btn btn-yes" onclick="terimaMaaf()">Maafin kok! ❤️</button>
+            
+            <!-- Tombol Kanan (Punya area awal sendiri) -->
+            <div class="btn-no-wrapper" id="btn-no-wrapper">
+                <button class="btn btn-no" id="btn-no" onmouseover="pindahTombol()" ontouchstart="pindahTombol()">Gamau</button>
+            </div>
+        </div>
+
+
+        <div id="pesan-diterima">
+            <p>yeeay! makasihh yapss sofie gemass tersayangg udah mauu maafinnn akuu. akuu benerr benerr berusahaa jadii sepertii yangg kamuu pengeninn. maaff yahh alayy bangett🥰🌹</p>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi jika tombol maaf diterima
+        function terimaMaaf() {
+            document.getElementById('pesan-diterima').style.display = 'block';
+            document.querySelector('.button-group').style.display = 'none';
+        }
+
+        // Fungsi agar tombol 'Gak mau' lari saat didekati pointer/sentuhan
+        function pindahTombol() {
+            const btnNo = document.getElementById('btn-no');
+            const container = document.querySelector('.container');
+            
+            // Batasi ruang gerak tombol di dalam kontainer utama
+            const maxX = container.clientWidth - btnNo.clientWidth - 40;
+            const maxY = container.clientHeight - btnNo.clientHeight - 40;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            btnNo.style.left = randomX + 'px';
+            btnNo.style.top = randomY + 'px';
+        }
+
+        // Fungsi otomatis membuat efek animasi hati melayang
+        function buatHati() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const size = Math.random() * 15 + 10;
+            heart.style.width = size + 'px';
+            heart.style.height = size + 'px';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            
+            container.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(buatHati, 300);
+    </script>
+</body>
+</html>
